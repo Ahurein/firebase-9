@@ -1,4 +1,5 @@
-import { initializeApp } from "./firebase/app";
+import { initializeApp } from "firebase/app";
+import { getFirestore, getDocs, collection } from "firebase/firestore";
 
 const firebaseConfig = {
   apiKey: "AIzaSyBy1XpQSDphVB6fM5IZBJV9SC7mzYKPtVU",
@@ -9,4 +10,20 @@ const firebaseConfig = {
   appId: "1:542286763384:web:b4125e033e6bc26de2a48d",
 };
 
-const app = initializeApp(firebaseConfig);
+initializeApp(firebaseConfig);
+
+const db = getFirestore();
+
+const booksRef = collection(db, "books");
+
+getDocs(booksRef)
+  .then((snapshot) => {
+    const books = [];
+    snapshot.docs.forEach((doc) => {
+      books.push({ ...doc.data(), id: doc.id });
+    });
+    console.log(books);
+  })
+  .catch((error) => {
+    console.log(error.message);
+  });
