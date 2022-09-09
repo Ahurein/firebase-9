@@ -7,26 +7,43 @@
  * If you are looking for production-ready output files, see mode: "production" (https://webpack.js.org/configuration/mode/).
  */
 /******/ (() => { // webpackBootstrap
+/******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
 /***/ "./src/index.js":
 /*!**********************!*\
   !*** ./src/index.js ***!
   \**********************/
-/***/ (() => {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("console.log(\"hello\");\r\n\n\n//# sourceURL=webpack://firebase/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\nObject(function webpackMissingModule() { var e = new Error(\"Cannot find module './firebase/app'\"); e.code = 'MODULE_NOT_FOUND'; throw e; }());\n\r\n\r\nconst firebaseConfig = {\r\n  apiKey: \"AIzaSyBy1XpQSDphVB6fM5IZBJV9SC7mzYKPtVU\",\r\n  authDomain: \"fir-9-2ffe2.firebaseapp.com\",\r\n  projectId: \"fir-9-2ffe2\",\r\n  storageBucket: \"fir-9-2ffe2.appspot.com\",\r\n  messagingSenderId: \"542286763384\",\r\n  appId: \"1:542286763384:web:b4125e033e6bc26de2a48d\",\r\n};\r\n\r\nconst app = Object(function webpackMissingModule() { var e = new Error(\"Cannot find module './firebase/app'\"); e.code = 'MODULE_NOT_FOUND'; throw e; }())(firebaseConfig);\r\n\n\n//# sourceURL=webpack://firebase/./src/index.js?");
 
 /***/ })
 
 /******/ 	});
+/************************************************************************/
+/******/ 	// The require scope
+/******/ 	var __webpack_require__ = {};
+/******/ 	
+/************************************************************************/
+/******/ 	/* webpack/runtime/make namespace object */
+/******/ 	(() => {
+/******/ 		// define __esModule on exports
+/******/ 		__webpack_require__.r = (exports) => {
+/******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 			}
+/******/ 			Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 		};
+/******/ 	})();
+/******/ 	
 /************************************************************************/
 /******/ 	
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module can't be inlined because the eval devtool is used.
 /******/ 	var __webpack_exports__ = {};
-/******/ 	__webpack_modules__["./src/index.js"]();
+/******/ 	__webpack_modules__["./src/index.js"](0, __webpack_exports__, __webpack_require__);
 /******/ 	
 /******/ })()
 ;
