@@ -8,6 +8,7 @@ import {
   query,
   where,
   doc,
+  updateDoc,
   orderBy,
   serverTimestamp,
   onSnapshot,
@@ -55,6 +56,14 @@ deleteForm.addEventListener("submit", (e) => {
   const docRef = doc(booksRef, deleteForm.id.value);
   deleteDoc(docRef).then(() => {
     deleteForm.reset();
+  });
+});
+const updateForm = document.getElementById("update");
+updateForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+  const docRef = doc(booksRef, updateForm.id.value);
+  updateDoc(docRef, {
+    title: "updated title",
   });
 });
 
