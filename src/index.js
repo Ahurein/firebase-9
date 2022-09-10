@@ -8,6 +8,7 @@ import {
   query,
   where,
   doc,
+  orderBy,
   serverTimestamp,
   onSnapshot,
 } from "firebase/firestore";
@@ -26,7 +27,7 @@ initializeApp(firebaseConfig);
 const db = getFirestore();
 
 const booksRef = collection(db, "books");
-const q = query(booksRef, where("author", "==", "ahurein"));
+const q = query(booksRef, orderBy("createdAt"));
 
 onSnapshot(q, (snapshot) => {
   const books = [];
@@ -55,4 +56,10 @@ deleteForm.addEventListener("submit", (e) => {
   deleteDoc(docRef).then(() => {
     deleteForm.reset();
   });
+});
+
+const staticDocRef = doc(booksRef, "vmeXY0nXkPIsC2awnuD9");
+
+onSnapshot(staticDocRef, (doc) => {
+  console.log(doc.data(), doc.id);
 });
