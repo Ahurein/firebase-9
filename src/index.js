@@ -14,6 +14,8 @@ import {
   onSnapshot,
 } from "firebase/firestore";
 
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+
 const firebaseConfig = {
   apiKey: "AIzaSyBy1XpQSDphVB6fM5IZBJV9SC7mzYKPtVU",
   authDomain: "fir-9-2ffe2.firebaseapp.com",
@@ -23,9 +25,10 @@ const firebaseConfig = {
   appId: "1:542286763384:web:b4125e033e6bc26de2a48d",
 };
 
-initializeApp(firebaseConfig);
+const app = initializeApp(firebaseConfig);
 
 const db = getFirestore();
+const auth = getAuth();
 
 const booksRef = collection(db, "books");
 const q = query(booksRef, orderBy("createdAt"));
@@ -69,6 +72,20 @@ updateForm.addEventListener("submit", (e) => {
 
 const staticDocRef = doc(booksRef, "vmeXY0nXkPIsC2awnuD9");
 
-onSnapshot(staticDocRef, (doc) => {
-  console.log(doc.data(), doc.id);
+const createForm = document.getElementById("createAcc");
+createForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+  let email = createForm.email.value;
+  let password = createForm.password.value;
+  createUserWithEmailAndPassword(auth, email, password);
+  createForm.reset();
 });
+
+// const signinForm = document.getElementById("signinAcc");
+// createForm.addEventListener("submit", (e) => {
+//   e.preventDefault();
+//   const docRef = doc(booksRef, updateForm.id.value);
+//   updateDoc(docRef, {
+//     title: "updated title",
+//   });
+// });
