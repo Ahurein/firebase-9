@@ -18,6 +18,8 @@ import {
   getAuth,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  signOut,
+  onAuthStateChanged,
 } from "firebase/auth";
 
 const firebaseConfig = {
@@ -100,4 +102,15 @@ signinForm.addEventListener("submit", (e) => {
     .catch((err) => {
       console.log(err.message);
     });
+});
+
+const signOutForm = document.getElementById("signout");
+signOutForm.addEventListener("click", (e) => {
+  signOut(auth).then(() => {
+    console.log("user signed out");
+  });
+});
+
+onAuthStateChanged(auth, (cred) => {
+  console.log("user state changed: ", cred);
 });
