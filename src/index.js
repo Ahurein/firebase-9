@@ -14,7 +14,11 @@ import {
   onSnapshot,
 } from "firebase/firestore";
 
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
 
 const firebaseConfig = {
   apiKey: "AIzaSyBy1XpQSDphVB6fM5IZBJV9SC7mzYKPtVU",
@@ -81,11 +85,19 @@ createForm.addEventListener("submit", (e) => {
   createForm.reset();
 });
 
-// const signinForm = document.getElementById("signinAcc");
-// createForm.addEventListener("submit", (e) => {
-//   e.preventDefault();
-//   const docRef = doc(booksRef, updateForm.id.value);
-//   updateDoc(docRef, {
-//     title: "updated title",
-//   });
-// });
+const signinForm = document.getElementById("signinAcc");
+signinForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+  let email = signinForm.email.value;
+  let password = signinForm.password.value;
+  console.log(email);
+  console.log(password);
+
+  signInWithEmailAndPassword(auth, email, password)
+    .then(({ user }) => {
+      console.log(user.uid);
+    })
+    .catch((err) => {
+      console.log(err.message);
+    });
+});
